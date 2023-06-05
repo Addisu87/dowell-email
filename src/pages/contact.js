@@ -9,7 +9,7 @@ const Contact = () => {
 
   return (
     <div className="flex relative flex-col md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
-      <div className="py-24 md:col-span-2 space-y-8">
+      <div className="py-20 md:col-span-2 space-y-8">
         <div className="px-4 sm:px-0">
           <h3 className="text-2xl md:text-4xl text-center font-bold leading-6 text-gray-900">
             Contact
@@ -18,8 +18,8 @@ const Contact = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="overflow-hidden drop-shadow-2xl sm:rounded-2xl">
             <div className="bg-white px-4 py-5 sm:p-6">
-              <div className="grid grid-cols-6 gap-6">
-                <div className="col-span-6 sm:col-span-3">
+              <div className="grid grid-cols-12 gap-6 lg:grid-cols-12">
+                <div className="col-span-12 sm:col-span-6">
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -39,7 +39,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-12 sm:col-span-6">
                   <label
                     htmlFor="name"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -59,7 +59,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-12 sm:col-span-6">
                   <label
                     htmlFor="last-name"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -79,7 +79,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="col-span-6 sm:col-span-3">
+                <div className="col-span-12 sm:col-span-6">
                   <label
                     htmlFor="last-name"
                     className="block text-sm font-medium leading-6 text-gray-900"
@@ -99,7 +99,7 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="col-span-6 sm:col-span-4">
+                <div className="col-span-12 sm:col-span-9">
                   <label
                     htmlFor="subject"
                     className="block text-sm font-medium leading-6 text-gray-900"
