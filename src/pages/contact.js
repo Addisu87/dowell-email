@@ -24,7 +24,7 @@ const Contact = () => {
                     htmlFor="name"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    Name
+                    Sender Name
                   </label>
                   <div className="mt-2">
                     <input
@@ -34,8 +34,7 @@ const Contact = () => {
                       placeholder=""
                       id="name"
                       autoComplete="name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                      placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-input"
                     />
                   </div>
                 </div>
@@ -55,8 +54,7 @@ const Contact = () => {
                       placeholder=""
                       id="email-address"
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                      placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-input"
                     />
                   </div>
                 </div>
@@ -76,8 +74,7 @@ const Contact = () => {
                       placeholder=""
                       id="receiver-name"
                       autoComplete="receiver-name"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                      placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-input"
                     />
                   </div>
                 </div>
@@ -97,8 +94,25 @@ const Contact = () => {
                       placeholder=""
                       id="email-address"
                       autoComplete="email"
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-input"
+                    />
+                  </div>
+                </div>
+
+                <div className="col-span-6 sm:col-span-4">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium leading-6 text-gray-900"
+                  >
+                    Subject
+                  </label>
+                  <div className="mt-2">
+                    <input
+                      id="subject"
+                      name="subject"
+                      type="text"
+                      autoComplete="subject"
+                      className="form-input"
                     />
                   </div>
                 </div>
@@ -118,18 +132,14 @@ const Contact = () => {
                       {...register("message", { required: true })}
                       placeholder=""
                       rows={4}
-                      className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300
-                    placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                      className="form-input"
                     />
                   </div>
                 </div>
               </div>
             </div>
             <div className="bg-gray-50 px-4 py-3 text-center md:text-left sm:px-6">
-              <button
-                type="submit"
-                className="inline-flex justify-center rounded-2xl border border-transparent bg-green-600 px-16 py-3 md:py-2 md:px-8 text-base font-medium text-white shadow-sm hover:bg-zinc-700 focus:outline-none focus:ring-2 focus:ring-zinc-500 focus:ring-offset-2"
-              >
+              <button type="submit" className="btn-send">
                 Send
               </button>
             </div>
