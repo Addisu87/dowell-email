@@ -16,7 +16,7 @@ const Contact = () => {
           </h3>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="overflow-hidden drop-shadow-2xl sm:rounded-xl">
+          <div className="overflow-hidden drop-shadow-2xl sm:rounded-2xl">
             <div className="bg-white px-4 py-5 sm:p-6">
               <div className="grid grid-cols-6 gap-6">
                 <div className="col-span-6 sm:col-span-3">
