@@ -12,7 +12,7 @@ const Contact = () => {
       <div className="py-24 md:col-span-2 space-y-8">
         <div className="px-4 sm:px-0">
           <h3 className="text-2xl md:text-4xl text-center font-bold leading-6 text-gray-900">
-            Get In Touch
+            Contact
           </h3>
         </div>
         <form onSubmit={handleSubmit(onSubmit)}>
