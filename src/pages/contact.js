@@ -10,7 +10,7 @@ const Contact = () => {
   const [body, setBody] = useState("");
   const [loader, setLoader] = useState("Save");
 
-  const API_KEY = "9df821e4-4bfe-4785-b036-3b7ab56c42f7";
+  const API_KEY = "1eb3120a-38ce-428b-b6d7-bfb8fac59fcf";
   const url = `https://100085.pythonanywhere.com/api/v1/mail/${API_KEY}/?type=validate`;
 
   const handleSubmit = (e) => {
