@@ -1,11 +1,53 @@
-import React from "react";
-import { useForm } from "react-hook-form";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 const Contact = () => {
-  const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    window.location.href = `mailto:manish@dowellresearch.in?body=${data.name}. &body=${data.message}`;
+  const [senderName, setSenderName] = useState("");
+  const [senderEmail, setSenderEmail] = useState("");
+  const [receiverName, setReceiverName] = useState("");
+  const [receiverEmail, setReceiverEmail] = useState("");
+  const [subject, setSubject] = useState("");
+  const [body, setBody] = useState("");
+  const [loader, setLoader] = useState("Save");
+
+  const API_KEY = "9df821e4-4bfe-4785-b036-3b7ab56c42f7";
+  const url = `https://100085.pythonanywhere.com/api/v1/mail/${API_KEY}/?type=validate`;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setLoader("Saving....");
+    axios
+      .post(
+        url,
+        {
+          name: receiverName,
+          email: receiverEmail,
+          fromName: senderName,
+          fromEmail: senderEmail,
+          subject: subject,
+          body: body,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((res) => {
+        setLoader("Save");
+      });
   };
+
+  useEffect(() => {
+    axios.get(url).then((res) => {
+      setSenderName(res.data.senderName);
+      setSenderEmail(res.data.senderEmail);
+      setReceiverName(res.data.receiverName);
+      setReceiverEmail(res.data.receiverEmail);
+      setSubject(res.data.subject);
+      setBody(res.data.body);
+    });
+  }, [url]);
 
   return (
     <div className="flex relative flex-col md:text-left md:flex-row max-w-7xl px-10 justify-evenly mx-auto items-center">
@@ -15,7 +57,7 @@ const Contact = () => {
             Contact
           </h3>
         </div>
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={(e) => handleSubmit(e)}>
           <div className="overflow-hidden drop-shadow-2xl sm:rounded-2xl">
             <div className="bg-white px-4 py-5 sm:p-6">
               <div className="grid grid-cols-6 gap-6">
@@ -23,9 +65,12 @@ const Contact = () => {
                   <input
                     type="text"
                     name="name"
-                    {...register("name", { required: true })}
                     placeholder="Sender name"
                     id="name"
+                    value={senderName}
+                    onChange={(e) => {
+                      setSenderName(e.target.value);
+                    }}
                     autoComplete="name"
                     className="form-input"
                   />
@@ -35,9 +80,12 @@ const Contact = () => {
                   <input
                     type="text"
                     name="email-address"
-                    {...register("SenderEmail", { required: true })}
                     placeholder="Sender Email"
                     id="email-address"
+                    value={senderEmail}
+                    onChange={(e) => {
+                      setSenderEmail(e.target.value);
+                    }}
                     autoComplete="email"
                     className="form-input"
                   />
@@ -47,9 +95,12 @@ const Contact = () => {
                   <input
                     type="text"
                     name="receiver-name"
-                    {...register("ReceiverName", { required: true })}
                     placeholder="Receiver Name"
                     id="receiver-name"
+                    value={receiverName}
+                    onChange={(e) => {
+                      setReceiverName(e.target.value);
+                    }}
                     autoComplete="receiver-name"
                     className="form-input"
                   />
@@ -59,9 +110,12 @@ const Contact = () => {
                   <input
                     type="text"
                     name="email-address"
-                    {...register("Receiver Email", { required: true })}
                     placeholder="Receiver Email"
                     id="email-address"
+                    value={receiverEmail}
+                    onChange={(e) => {
+                      setReceiverEmail(e.target.value);
+                    }}
                     autoComplete="email"
                     className="form-input"
                   />
@@ -72,6 +126,10 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     type="text"
+                    value={subject}
+                    onChange={(e) => {
+                      setSubject(e.target.value);
+                    }}
                     placeholder="Subject"
                     autoComplete="subject"
                     className="form-input"
@@ -82,7 +140,10 @@ const Contact = () => {
                   <textarea
                     id="message"
                     name="message"
-                    {...register("message", { required: true })}
+                    value={body}
+                    onChange={(e) => {
+                      setBody(e.target.value);
+                    }}
                     placeholder="Message"
                     rows={4}
                     className="form-input"
@@ -92,7 +153,7 @@ const Contact = () => {
             </div>
             <div className="bg-gray-50 px-4 py-3 text-center md:text-left sm:px-6">
               <button type="submit" className="btn-send">
-                Send
+                {loader}
               </button>
             </div>
           </div>
