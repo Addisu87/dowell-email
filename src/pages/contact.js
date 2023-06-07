@@ -31,6 +31,7 @@ const Contact = () => {
           headers: {
             "Content-Type": "application/json",
           },
+          timeout: 3000,
         }
       )
       .then((res) => {
